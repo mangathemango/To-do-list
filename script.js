@@ -5,7 +5,7 @@ const wrapper = document.getElementById("wrapper")
 const mode = document.getElementById("mode")
 const form = document.getElementById("form")
 let updating = false
-let Tasks = []
+let Tasks = JSON.parse(localStorage.getItem("Tasks"))
 
 
 const insert = () => {
@@ -50,7 +50,7 @@ const update_list = (mode,id) => {
         delete_button.setAttribute("onclick",`remove(${i})`)
         Task.appendChild(delete_button)
     }
-    
+    localStorage.setItem("Tasks", JSON.stringify(Tasks))
 }
 
 const remove = (i) => {
@@ -90,3 +90,5 @@ const updatetask = (i) => {
     updating = false
     update_list()
 }
+
+update_list()
