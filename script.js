@@ -10,9 +10,13 @@ let Tasks = JSON.parse(localStorage.getItem("Tasks"))
 
 const insert = () => {
     const Newtask = document.getElementById("inputbox").value
-    if(Newtask != "") {
+    if (Tasks === null) {
+        Tasks = []
+    }
+    if (Newtask != "") {
         Tasks.push(Newtask)
     }
+
     updating = false
     update_list("insert",0)
     document.getElementById("inputbox").value = ""
